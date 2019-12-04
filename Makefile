@@ -3,7 +3,7 @@ PROJECT = wordpress
 # コンテナを起動
 .PHONY: start
 start:
-	docker-compose up -d --build
+	docker-compose up -d
 
 # コンテナを起動 (コンソールにデバックを表示させる)
 .PHONY: start-d
