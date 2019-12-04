@@ -3,14 +3,12 @@ PROJECT = wordpress
 # コンテナを起動
 .PHONY: start
 start:
-	docker-compose up -d
-	yarn install
-	yarn start
+	docker-compose up -d --build
 
 # コンテナを起動 (コンソールにデバックを表示させる)
 .PHONY: start-d
 start-d:
-	docker-compose -p ${PROJECT} up --build
+	docker-compose up
 
 # ログを表示
 .PHONY: logs
@@ -33,9 +31,9 @@ ps-all:
 	docker ps -a
 
 # mysqlのコンテナの中に入る
-.PHONY: on-db
-on-db:
-	docker exec -it mysql57 bin/bash
+.PHONY: on-python
+on-python:
+	docker exec -it python_app bash
 
 # nodeのコンテナの中に入る
 .PHONY: on-wordpress
