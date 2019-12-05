@@ -32,7 +32,7 @@ $ make kill
 $ make logs
 ```
 
-## コンテナの status 確認
+## コンテナのステータスを確認
 
 ```bash
 $ make ps
