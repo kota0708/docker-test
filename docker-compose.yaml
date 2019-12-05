@@ -1,5 +1,15 @@
 version: "3"
 services:
+  nginx:
+    container_name: nginx-container
+    build: ./nginx
+    environment:
+      TZ: "Asia/Tokyo"
+    volumes:
+      - "./nginx/log:/var/log/nginx"
+    ports:
+      - 80:80
+
   python3:
     container_name: python-container
     build: ./python
