@@ -1,5 +1,11 @@
 version: "3"
 services:
+  web:
+    build: ./nginx
+    container_name: nginx-container
+    ports:
+      - 80:80
+
   python3:
     container_name: python-container
     build: ./python
