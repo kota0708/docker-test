@@ -1,5 +1,3 @@
-PROJECT = wordpress
-
 # コンテナを起動
 .PHONY: start
 start:
