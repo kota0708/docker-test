@@ -1,16 +1,12 @@
-PROJECT = wordpress
-
 # コンテナを起動
 .PHONY: start
 start:
 	docker-compose up -d
-	yarn install
-	yarn start
 
-# コンテナを起動 (コンソールにデバックを表示させる)
-.PHONY: start-d
-start-d:
-	docker-compose -p ${PROJECT} up --build
+# コンテナを起動 (ビルドも行う)
+.PHONY: build
+build:
+	docker-compose up -d --build
 
 # ログを表示
 .PHONY: logs
@@ -33,14 +29,14 @@ ps-all:
 	docker ps -a
 
 # mysqlのコンテナの中に入る
-.PHONY: on-db
-on-db:
-	docker exec -it mysql57 bin/bash
+.PHONY: on-python
+on-python:
+	docker exec -it python-container bash
 
 # nodeのコンテナの中に入る
-.PHONY: on-wordpress
-on-node:
-	docker exec -i -t wordpress bash
+.PHONY: on-nuxt
+on-nuxt:
+	docker exec -i -t nuxt-container sh
 
 # コンテナ、イメージを削除
 .PHONY: clean
@@ -54,4 +50,4 @@ clean:
 
 # コンテナをリスタート
 .PHONY: restart
-restart: kill start-d
+restart: kill start

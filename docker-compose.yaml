@@ -1,0 +1,29 @@
+version: "3"
+services:
+  nginx:
+    container_name: nginx-container
+    build: ./nginx
+    environment:
+      TZ: "Asia/Tokyo"
+    volumes:
+      - "./nginx/log:/var/log/nginx"
+    ports:
+      - 80:80
+
+  python3:
+    container_name: python-container
+    build: ./python
+    ports:
+      - "4000:4000"
+    volumes:
+      - ./python:/app
+    tty: true
+
+  nuxt:
+    container_name: nuxt-container
+    build: ./node
+    volumes:
+      - ./node:/app
+    ports:
+      - "8080:3000"
+    tty: true
