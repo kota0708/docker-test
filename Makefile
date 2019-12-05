@@ -52,4 +52,4 @@ clean:
 
 # コンテナをリスタート
 .PHONY: restart
-restart: kill start-d
+restart: kill start
