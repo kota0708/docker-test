@@ -33,12 +33,12 @@ ps-all:
 # mysqlのコンテナの中に入る
 .PHONY: on-python
 on-python:
-	docker exec -it python_app bash
+	docker exec -it python-container bash
 
 # nodeのコンテナの中に入る
-.PHONY: on-wordpress
-on-node:
-	docker exec -i -t wordpress bash
+.PHONY: on-nuxt
+on-nuxt:
+	docker exec -i -t nuxt-container sh
 
 # コンテナ、イメージを削除
 .PHONY: clean
