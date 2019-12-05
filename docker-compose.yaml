@@ -1,8 +1,12 @@
 version: "3"
 services:
-  web:
-    build: ./nginx
+  nginx:
     container_name: nginx-container
+    build: ./nginx
+    environment:
+      TZ: "Asia/Tokyo"
+    volumes:
+      - "./nginx/log:/var/log/nginx"
     ports:
       - 80:80
 

@@ -3,7 +3,7 @@
 start:
 	docker-compose up -d
 
-# コンテナを起動 (コンソールにデバックを表示させる)
+# コンテナを起動 (ビルドも行う)
 .PHONY: build
 build:
 	docker-compose up -d --build

@@ -1,7 +1,6 @@
 # イメージの指定
 FROM node:10.16.0-alpine
 
-# コンテナ内で cd /app しているようなもの
 WORKDIR /app
 
 COPY . /app
