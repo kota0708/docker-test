@@ -14,7 +14,7 @@ RUN apk update && \
   npm install -g vue-cli
 
 ENV HOST 0.0.0.0
-EXPOSE 8080
+EXPOSE 3000
 
 CMD ["sh", "-c", "yarn install && yarn dev"]
 
