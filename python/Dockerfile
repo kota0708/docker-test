@@ -1,28 +1,22 @@
-# pythonの3.7.2-slimをベースにする
-FROM python:3.7.2-slim
+# ベースイメージとして python v3.6 を使用する
+FROM python:3.6
 
-# ARGで変数を定義
-# buildする時に変更可能
-# コンテナ内のディレクトを決めておく
-ARG root_directory=/sample001
+# 以降の RUN, CMD コマンドで使われる作業ディレクトリを指定する
+WORKDIR /app
 
-# python3 pipのインストール
-RUN apt-get update && apt-get install -y \
-  python3 \
-  python3-pip \
-  # imageのサイズを小さくするためにキャッシュ削除
-  && apt-get clean \
-  && rm -rf /var/lib/apt/lists/* \
-  # pipのアップデート
-  && pip install --upgrade pip
+# カレントディレクトリにある資産をコンテナ上の ｢/app｣ ディレクトリにコピーする
+ADD . /app
 
-# Dockerfileを実行したディレクトにあるファイルを全てイメージにコピー
-COPY . ${root_directory}/
+WORKDIR /app/pip
 
-# ライブラリのインストール
-WORKDIR ${root_directory}/pip/
+# ｢ requirements.txt ｣にリストされたパッケージをインストールする
+RUN pip install --trusted-host pypi.python.org -r requirements.txt
 
-RUN pip install -r requirements.txt
+WORKDIR /app/src
 
-# ディレレクトリの移動
-WORKDIR ${root_directory}
+# Docker に対して｢ 80 番ポート ｣で待受けするよう指定する
+EXPOSE 80
+
+# コンテナが起動したときに実行される命令を指定する
+# ここでは後述の ｢app.py ｣を実行するよう指示している
+CMD ["python", "app.py"]

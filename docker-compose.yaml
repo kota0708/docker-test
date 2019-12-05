@@ -1,0 +1,9 @@
+version: "3"
+services:
+  python3:
+    container_name: python-container
+    build: ./python
+    ports:
+      - "4000:80"
+    volumes:
+      - ./python:/app
