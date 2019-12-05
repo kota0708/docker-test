@@ -49,4 +49,4 @@ $ make ps
 └── Makefile            # コマンドファイル
 ```
 
-![docker構造](https://github.com/kota0708/docker-test/construction.jpg)
+![docker構造](https://github.com/kota0708/docker-test/blob/master/construction.jpg)
