@@ -1,6 +1,7 @@
 version: "3"
 services:
-  web:
+  python3:
+    container_name: python-container
     build: .
     ports:
       - "4000:80"
