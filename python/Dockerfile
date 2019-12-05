@@ -5,7 +5,7 @@ FROM python:3.6
 WORKDIR /app
 
 # カレントディレクトリにある資産をコンテナ上の ｢/app｣ ディレクトリにコピーする
-ADD . /app
+COPY . /app
 
 WORKDIR /app/pip
 
