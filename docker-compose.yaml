@@ -7,15 +7,13 @@ services:
       - "4000:80"
     volumes:
       - ./python:/app
+    tty: true
 
   nuxt:
     container_name: nuxt-container
-    # Dockerfileの場所
     build: ./node
-    tty: true
-    # ホストOSとコンテナ内でソースコードを共有
     volumes:
       - ./node:/app
-    # コンテナ内部の3000を外部から８０８０でアクセス
     ports:
       - "8080:3000"
+    tty: true
